@@ -6,8 +6,8 @@
 
 int **alloc_matrix(int n, int m);
 
-void read_matrix(int **mat, int *n, int *m);
+void read_matrix(int **mat, int n, int m);
 
-void _mat
+void display_matrix(int **mat, int n, int m);
 
 #endif

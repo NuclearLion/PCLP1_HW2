@@ -22,14 +22,10 @@ int main(void)
 			db = realloc(db, index * sizeof(caracteristics));
 			if (!db)
 				return -1;
-
-			read_matrix(db[index].mat, &db[index].n, &db[index].m);
-			// scanf("%d%d", &database[index_matrix].n, &database[index_matrix].m);
-
-			printf("INDEX: %d\n", index);
-			printf("N: %d\n", db[index].n);
-			printf("M: %d\n", db[index].m);
-			
+			scanf("%d%d", &db[index].n, &db[index].m);
+			db[index].mat = alloc_matrix(db[index].n, db[index].m);
+			read_matrix(db[index].mat, db[index].n, db[index].m);
+			//display_matrix(db[index].mat, db[index].n, db[index].m);
 			break;
 		default:
 			printf("Unrecognized command\n");
