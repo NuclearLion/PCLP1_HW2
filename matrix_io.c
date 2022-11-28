@@ -40,13 +40,3 @@ void display_matrix(int **mat, int n, int m)
 		printf("\n");
 	}
 }
-
-void interrogate(caracteristics *db, int index) {
-	int ind = 0;
-	scanf("%d", &ind);
-	if (ind > index) {
-		printf("No matrix with the given index\n");
-		return;
-	}
-	printf("%d %d\n", db[ind].n, db[ind].m);
-}

@@ -1,5 +1,6 @@
 //Dan Dominic Staicu 311CA
 #include "matrix_io.h"
+#include "queries.h"
 
 int main(void)
 {
@@ -27,7 +28,10 @@ int main(void)
 			//display_matrix(db[index].mat, db[index].n, db[index].m);
 			break;
 		case 'D':
-			interrogate(db, index);
+			interrogate_dim(db, index);
+			break;
+		case 'P':
+			query_print(db, index);
 			break;	
 		default:
 			printf("Unrecognized command\n");
