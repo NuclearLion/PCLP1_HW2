@@ -1,3 +1,4 @@
+//Dan Dominic Staicu 311CA
 #include "matrix_io.h"
 
 //alloc matrix
@@ -24,11 +25,7 @@ int **alloc_matrix(int n, int m)
 
 void read_matrix(int **mat, int n, int m)
 {
-	//read dimensions
-	//scanf("%d%d", n, m);
-	//alloc matrix
-	//mat = alloc_matrix(*n, *m);
-	//read elements of matrix
+	//read elements of matrix from STDIN
 	for (int i = 0; i < n; ++i)
 		for (int j = 0; j < m; ++j)
 			scanf("%d", &mat[i][j]);
@@ -36,11 +33,20 @@ void read_matrix(int **mat, int n, int m)
 
 void display_matrix(int **mat, int n, int m)
 {
-	// printf("mat00: %d\n", mat[0][0]);
-	// printf("n si m: %d %d", n, m);
+	//print matrix at STDOUT
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) 
 			printf("%d ", mat[i][j]);
 		printf("\n");
 	}
+}
+
+void interrogate(caracteristics *db, int index) {
+	int ind = 0;
+	scanf("%d", &ind);
+	if (ind > index) {
+		printf("No matrix with the given index\n");
+		return;
+	}
+	printf("%d %d\n", db[ind].n, db[ind].m);
 }
