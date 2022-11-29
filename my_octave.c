@@ -1,6 +1,7 @@
 //Dan Dominic Staicu 311CA
 #include "matrix_io.h"
 #include "queries.h"
+#include "matirx_mem_op.h"
 
 int main(void)
 {
@@ -10,7 +11,7 @@ int main(void)
 	//db is short from data base (of all matrixes)
 	caracteristics *db = calloc(1, sizeof(caracteristics));
 	if (!db) {
-		printf("prost\n");
+		printf("db calloc failed\n");
 		return -1;
 	}
 
@@ -32,7 +33,13 @@ int main(void)
 			break;
 		case 'P':
 			query_print(db, index);
-			break;	
+			break;
+		case 'C':
+			//resize_mat(db, index);
+			query_resize(db, index);
+			// printf("!!!HERE:\n");
+			// query_print(db, index);
+			break;
 		default:
 			printf("Unrecognized command\n");
 			break;

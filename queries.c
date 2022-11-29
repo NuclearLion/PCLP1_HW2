@@ -1,4 +1,5 @@
 #include "queries.h"
+#include "matirx_mem_op.h"
 
 //check if current index corresponds to any matrix
 int check_error(int index, int c_ind) {
@@ -27,4 +28,13 @@ void query_print(caracteristics *db, int index) {
 		return;
 	}
 	display_matrix(db[c_ind].mat, db[c_ind].n, db[c_ind].m);
+}
+
+void query_resize(caracteristics *db, int index) {
+	int ind = 0;
+	scanf("%d", &ind);
+	if (check_error(index, ind)) {
+		return;
+	}
+	db[ind].mat = resize_mat(db, ind);
 }

@@ -10,4 +10,6 @@ void interrogate_dim(caracteristics *db, int index);
 
 void query_print(caracteristics *db, int index);
 
+void query_resize(caracteristics *db, int index);
+
 #endif
