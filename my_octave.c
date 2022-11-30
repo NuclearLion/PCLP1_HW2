@@ -34,7 +34,15 @@ int main(void)
 			query_resize(db, index);
 			break;
 		case 'M':
+			//TODO review, maybe you can do A * B but also B * A
 			query_multiply(&db, &index, &mat_cnt);
+			break;
+		case 'O':
+			// printf("BEFORE\n");
+			// display_db(db, index);
+			sort_db(&db, index);
+			// printf("AFTER\n");
+			// display_db(db, index);
 			break;
 		default:
 			printf("Unrecognized command\n");

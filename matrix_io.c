@@ -57,7 +57,8 @@ void alloc_new_in_db(charact **db, int *mat_cnt, int *index) {
 void display_db(charact *db, int index) {
 	printf("HERE DISPLAY ALL DB: ");
 	for (int k = 0; k <= index; ++k) {
-		printf("Index %d of N: %d, M: %d, MAT:\n", k, db[k].n, db[k].m);
+		printf("Index %d of N: %d, M: %d, SUM: %d, MAT:\n", 
+		k, db[k].n, db[k].m, db[k].sum);
 		for (int i = 0; i < db[k].n; ++i) {
 			for (int j = 0; j < db[k].m; ++j)
 				printf("%d ", db[k].mat[i][j]);

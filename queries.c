@@ -2,6 +2,8 @@
 #include "queries.h"
 #include "matirx_mem_op.h"
 
+#define MOD 10007
+
 //check if current index corresponds to any matrix
 int check_error(int index, int c_ind) {
 	if (c_ind > index) {
@@ -69,7 +71,8 @@ void query_multiply(charact **db, int *index, int *mat_cnt) {
 		for (int j = 0; j < (*db)[*index].m; ++j) {
 			int sum = 0;
 			for (int k = 0; k < (*db)[m1_ind].m; ++k)
-				sum += (*db)[m1_ind].mat[i][k] * (*db)[m2_ind].mat[k][j];
+				sum = (sum + (*db)[m1_ind].mat[i][k] * (*db)[m2_ind].mat[k][j])
+				% MOD;
 			(*db)[*index].mat[i][j] = sum; 
 		}
 	}

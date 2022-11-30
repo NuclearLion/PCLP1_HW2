@@ -6,6 +6,8 @@ typedef struct {
 	//generic names for number lines and columns
 	int n, m; 
 	int **mat;
+	//sum of all elements inside the matrix
+	int sum;
 }charact;
 
 #endif

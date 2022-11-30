@@ -4,7 +4,10 @@
 
 #include "queries.h"
 #include "array_op.h"
+#include "utils.h"
 
 int **resize_mat(charact *db, int index);
+
+void sort_db(charact **db, int index);
 
 #endif
