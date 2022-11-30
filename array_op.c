@@ -1,3 +1,4 @@
+//Dan Dominic Staicu 311CA
 #include "array_op.h"
 
 //read array dim and elements

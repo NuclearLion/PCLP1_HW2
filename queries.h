@@ -1,3 +1,4 @@
+//Dan Dominic Staicu 311CA
 #ifndef _QUERIES_H_
 #define _QUERIES_H_
 
@@ -6,10 +7,12 @@
 
 int check_error(int index, int c_ind);
 
-void interrogate_dim(caracteristics *db, int index);
+void interrogate_dim(charact *db, int index);
 
-void query_print(caracteristics *db, int index);
+void query_print(charact *db, int index);
 
-void query_resize(caracteristics *db, int index);
+void query_resize(charact *db, int index);
+
+void query_multiply(charact **db, int *index, int *mat_cnt);
 
 #endif

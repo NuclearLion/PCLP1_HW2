@@ -1,7 +1,8 @@
+//Dan Dominic Staicu 311CA
 #include "matirx_mem_op.h"
 
 //resize mat keeping only given lines and cols
-int **resize_mat(caracteristics *db, int ind)
+int **resize_mat(charact *db, int ind)
 {
 	int lin = 0, col = 0;
 	int *lin_ind, *col_ind;
@@ -16,7 +17,4 @@ int **resize_mat(caracteristics *db, int ind)
 	db[ind].n = lin;
 	db[ind].m = col;
 	return new_mat;
-	//printf("!!!HERE\n");
-	//display_matrix(new_mat, lin, col);
-	//printf("%d", db[ind].mat[0][0]);
 }

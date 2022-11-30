@@ -1,0 +1,25 @@
+printf("HERE IS IN MAIN\n");
+printf("last index: %d\n", index);
+printf("N: %d\nM: %d\n", db[index].n, db[index].m);
+
+// ++mat_cnt;
+			// index = mat_cnt - 1;
+			// db = realloc(db, mat_cnt * sizeof(charact));
+			// if (!db)
+			// 	return -1;
+
+
+printf("!!!1HERE1!!!\n");
+	printf("old index: %d\nold mat cnt: %d\n", *index, *mat_cnt);
+
+printf("!!HERE!!\n");
+	printf("new index: %d\nnew mat cnt: %d\n", *index, *mat_cnt);
+
+		//display_matrix(db[0].mat, db[0].n, db[0].m);
+
+
+		printf("HERE IS DIPLAY!!!!\n");
+	printf("N: %d\nM: %d\n", db[*index].n, db[*index].m);
+	display_matrix(db[*index].mat, db[*index].n, db[*index].m);
+
+

@@ -12,6 +12,10 @@ void read_matrix(int **mat, int n, int m);
 
 void display_matrix(int **mat, int n, int m);
 
-void interrogate(caracteristics *db, int index);
+void interrogate(charact *db, int index);
+
+void alloc_new_in_db(charact **db, int *mat_cnt, int *index);
+
+void display_db(charact *db, int index);
 
 #endif
