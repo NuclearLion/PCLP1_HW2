@@ -1,6 +1,6 @@
 //Dan Dominic Staicu 311CA
 #include "matrix_io.h"
-#include "queries.h"
+#include "queries2.h"
 #include "matirx_mem_op.h"
 
 int main(void)
@@ -42,6 +42,9 @@ int main(void)
 		case 'T':
 			query_transposed(db, index);
 			break;
+		case 'R':
+			query_pow(db, index);
+			break;	
 		default:
 			printf("Unrecognized command\n");
 			break;

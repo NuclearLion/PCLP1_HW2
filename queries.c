@@ -64,27 +64,17 @@ void query_multiply(charact **db, int *index, int *mat_cnt)
 	(*db)[*index].n = (*db)[m1_ind].n;
 	(*db)[*index].m = (*db)[m2_ind].m;
 	//alloc mat's mem
-	(*db)[*index].mat = alloc_matrix((*db)[*index].n, (*db)[*index].m);
-	//create the product mat
-	for (int i = 0; i < (*db)[*index].n; ++i) {
-		for (int j = 0; j < (*db)[*index].m; ++j) {
-			int sum = 0;
-			for (int k = 0; k < (*db)[m1_ind].m; ++k)
-				sum = (sum + (*db)[m1_ind].mat[i][k] * (*db)[m2_ind].mat[k][j])
-				% MOD;
-			(*db)[*index].mat[i][j] = sum; 
-		}
-	}
-}
-
-void query_transposed(charact *db, int index)
-{
-	int ind = 0;
-	scanf("%d", &ind);
-	if (check_error(index, ind)) {
-		return;
-	}
-	//maybe a leak here?
-	db[ind].mat = transp_mat(db[ind].mat, db[ind].n, db[ind].m);
-	swap_any(&db[ind].n, &db[ind].m, (size_t)sizeof(int));
+	(*db)[*index].mat = product_mat((*db)[m1_ind].mat, (*db)[m2_ind].mat,
+	(*db)[*index].n, (*db)[m1_ind].m, (*db)[*index].m);
+	// (*db)[*index].mat = alloc_matrix((*db)[*index].n, (*db)[*index].m);
+	// //create the product mat
+	// for (int i = 0; i < (*db)[*index].n; ++i) {
+	// 	for (int j = 0; j < (*db)[*index].m; ++j) {
+	// 		int sum = 0;
+	// 		for (int k = 0; k < (*db)[m1_ind].m; ++k)
+	// 			sum = (sum + (*db)[m1_ind].mat[i][k] * (*db)[m2_ind].mat[k][j])
+	// 			% MOD;
+	// 		(*db)[*index].mat[i][j] = sum; 
+	// 	}
+	// }
 }

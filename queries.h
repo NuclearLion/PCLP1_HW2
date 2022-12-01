@@ -15,6 +15,4 @@ void query_resize(charact *db, int index);
 
 void query_multiply(charact **db, int *index, int *mat_cnt);
 
-void query_transposed(charact *db, int index);
-
 #endif

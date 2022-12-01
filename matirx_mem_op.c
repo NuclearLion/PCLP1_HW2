@@ -48,3 +48,36 @@ int **transp_mat(int **mat, int n, int m)
 			t_mat[j][i] = mat[i][j];
 	return t_mat;
 }
+
+int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2)
+{
+	int **result = alloc_matrix(lin1, col2);
+	for (int i = 0; i < lin1; ++i)
+		for (int j = 0; j < col2; ++j) {
+			int sum = 0;
+			for (int k = 0; k < l2c1; ++k)
+				sum = (sum + mat1[i][k] * mat2[k][j]) % MOD;
+			result[i][j] = sum;
+		}
+	return result;
+}
+
+int **mat_pow(int **mat, int dim, int pow)
+{
+	int **result = alloc_matrix(dim, dim);
+	//init result mat as I_n
+	for (int i = 0; i < dim; ++i)
+		for (int j = 0; j < dim; ++j)
+			if (i == j)
+				result[i][j] = 1;
+			else
+				result[i][j] = 0;
+
+	while (pow > 0) {
+		if (pow % 2 == 1)
+			result = product_mat(result, mat, dim, dim, dim);
+		mat = product_mat(mat, mat, dim, dim, dim);
+		pow /= 2;
+	}
+	return result;
+}

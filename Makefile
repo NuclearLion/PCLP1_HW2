@@ -3,7 +3,8 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -std=c99
 #LIB=-lm
-FILES=my_octave.c matrix_io.c queries.c matirx_mem_op.c array_op.c utils.c
+#FILES=my_octave.c matrix_io.c queries.c matirx_mem_op.c utils.c queries2.c
+FILES=$(wildcard *.c)
 
 TARGET = my_octave
 
