@@ -38,11 +38,7 @@ int main(void)
 			query_multiply(&db, &index, &mat_cnt);
 			break;
 		case 'O':
-			// printf("BEFORE\n");
-			// display_db(db, index);
 			sort_db(&db, index);
-			// printf("AFTER\n");
-			// display_db(db, index);
 			break;
 		default:
 			printf("Unrecognized command\n");

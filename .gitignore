@@ -2,3 +2,11 @@
 *.out
 *.exe
 .vscode
+*.zip
+check_utils
+cs
+tasks
+check
+install.sh
+check_my_octave
+.check.grade
