@@ -18,7 +18,6 @@ int main(void)
 	while (scanf("%c", &c) != EOF) {
 		switch (c) {
 		case 'L':
-			
 			alloc_new_in_db(&db, &mat_cnt, &index);
 			scanf("%d%d", &db[index].n, &db[index].m);
 			db[index].mat = alloc_matrix(db[index].n, db[index].m);
@@ -39,6 +38,9 @@ int main(void)
 			break;
 		case 'O':
 			sort_db(&db, index);
+			break;
+		case 'T':
+			query_transposed(db, index);
 			break;
 		default:
 			printf("Unrecognized command\n");

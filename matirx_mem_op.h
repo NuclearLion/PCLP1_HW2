@@ -10,4 +10,6 @@ int **resize_mat(charact *db, int index);
 
 void sort_db(charact **db, int index);
 
+int **transp_mat(int **mat, int n, int m);
+
 #endif

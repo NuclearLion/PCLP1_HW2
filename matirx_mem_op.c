@@ -38,3 +38,13 @@ void sort_db(charact **db, int index)
 				swap_any(&(*db)[i], &(*db)[j], (size_t)sizeof(charact));
 			}
 }
+
+//return the transposed of any mat
+int **transp_mat(int **mat, int n, int m)
+{
+	int **t_mat = alloc_matrix(m, n);
+	for (int i = 0; i < n; ++i)
+		for (int j = 0; j < m; ++j)
+			t_mat[j][i] = mat[i][j];
+	return t_mat;
+}
