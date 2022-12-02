@@ -40,14 +40,18 @@ void query_del(charact *db, int *index, int *cnt_mat)
 	if (check_error(*index, ind)) {
 		return;
 	}
-	// for (int i = 0; i < db[ind].n; ++i)
-	// 	free(db[ind].mat[i]);
-	// free(db[ind].mat);
 	free_mat(db[ind].mat, db[ind].n);
-	//printf("Ind: %d\n", ind);
 	for (int i = ind; i < *index; ++i)
 		db[i] = db[i + 1];
 	--*cnt_mat;
 	--*index;
 	db = realloc(db, *cnt_mat * sizeof(charact));
+}
+
+void free_all(charact *db, int index)
+{
+	for (int i = 0; i < index; ++i) {
+		free_mat(db[i].mat, db[i].n);
+	}
+	free(db);
 }

@@ -48,6 +48,10 @@ int main(void)
 		case 'F':
 			query_del(db, &index, &mat_cnt);
 			break;
+		case 'Q':
+			free_all(db, index);
+			return 0;
+			break;
 		default:
 			printf("Unrecognized command\n");
 			break;

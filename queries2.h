@@ -13,4 +13,6 @@ void query_pow(charact *db, int index);
 
 void query_del(charact *db, int *index, int *cnt_mat);
 
+void free_all(charact *db, int index);
+
 #endif
