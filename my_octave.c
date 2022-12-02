@@ -9,7 +9,7 @@ int main(void)
 	int mat_cnt = 0; //of how many matrixes were read
 	int index = 0; //of last matrix
 	//db is short from data base (of all matrixes)
-	charact *db = calloc(1, sizeof(charact));
+	charact *db = malloc(sizeof(charact));
 	if (!db) {
 		printf("db calloc failed\n");
 		return -1;
@@ -24,26 +24,27 @@ int main(void)
 			read_matrix(db[index].mat, db[index].n, db[index].m);
 			break;
 		case 'D':
-			interrogate_dim(db, index);
+			interrogate_dim(db, index, mat_cnt);
 			break;
 		case 'P':
-			query_print(db, index);
+			query_print(db, index, mat_cnt);
 			break;
 		case 'C':
-			query_resize(db, index);
+			query_resize(db, index, mat_cnt);
 			break;
 		case 'M':
 			//TODO review, maybe you can do A * B but also B * A
+			//display_db(db, index);
 			query_multiply(&db, &index, &mat_cnt);
 			break;
 		case 'O':
 			sort_db(&db, index);
 			break;
 		case 'T':
-			query_transposed(db, index);
+			query_transposed(db, index, mat_cnt);
 			break;
 		case 'R':
-			query_pow(db, index);
+			query_pow(db, index, mat_cnt);
 			break;
 		case 'F':
 			query_del(db, &index, &mat_cnt);
@@ -58,5 +59,6 @@ int main(void)
 		}
 		getchar();
 	}
+	free_all(db, index);
 	return 0;
 }

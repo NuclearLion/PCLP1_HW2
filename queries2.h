@@ -7,9 +7,9 @@
 #include "utils.h"
 #include "matrix_io.h"
 
-void query_transposed(charact *db, int index);
+void query_transposed(charact *db, int index, int mat_cnt);
 
-void query_pow(charact *db, int index);
+void query_pow(charact *db, int index, int mat_cnt);
 
 void query_del(charact *db, int *index, int *cnt_mat);
 

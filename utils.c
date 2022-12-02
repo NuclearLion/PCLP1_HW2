@@ -27,3 +27,35 @@ void read_vect(int **v, int *n)
 		scanf("%d", &w[i]);
 }
 
+//check if sum after % MOD is negative
+int check_pos(int sum)
+{
+	if (sum < 0)
+		sum += MOD;
+	return sum;
+}
+
+//check if current index corresponds to any matrix
+int check_error(int index, int c_ind, int mat_cnt)
+{
+	//if there are no mats in db and
+	//if curent index is above the last index
+	if (c_ind < 0 || c_ind > index || mat_cnt < 1) {
+		printf("No matrix with the given index\n");
+		return 1;
+	}
+	return 0;
+}
+
+//it's more efficient to create some local vars and read them with 2 fors
+//rather than reading them as arrays (so we don't have to allocate memory)
+void trash() {
+	int lin = 0, col = 0;
+	int trash = 0;
+	scanf("%d", &lin);
+	for (int i = 0; i < lin; ++i)
+		scanf("%d", &trash);
+	scanf("%d", &col);
+	for (int i = 0; i < col; ++i)
+		scanf("%d", &trash);
+}
