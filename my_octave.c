@@ -44,7 +44,10 @@ int main(void)
 			break;
 		case 'R':
 			query_pow(db, index);
-			break;	
+			break;
+		case 'F':
+			query_del(db, &index, &mat_cnt);
+			break;
 		default:
 			printf("Unrecognized command\n");
 			break;

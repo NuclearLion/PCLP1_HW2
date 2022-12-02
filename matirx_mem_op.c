@@ -20,7 +20,6 @@ int **resize_mat(charact *db, int ind)
 	db[ind].m = col;
 	return new_mat;
 }
-
 void sort_db(charact **db, int index)
 {
 	//calculate the sum of elements of every mat inside db
@@ -30,7 +29,6 @@ void sort_db(charact **db, int index)
 			for (int j = 0; j < (*db)[k].m; ++j) 
 				(*db)[k].sum = (*db)[k].sum + (*db)[k].mat[i][j] % MOD;
 	}
-
 	//sort the mats inside db according to sum
 	for (int i = 0; i < index; ++i)
 		for(int j = i + 1; j <= index; ++j)
@@ -38,7 +36,6 @@ void sort_db(charact **db, int index)
 				swap_any(&(*db)[i], &(*db)[j], (size_t)sizeof(charact));
 			}
 }
-
 //return the transposed of any mat
 int **transp_mat(int **mat, int n, int m)
 {
@@ -48,7 +45,7 @@ int **transp_mat(int **mat, int n, int m)
 			t_mat[j][i] = mat[i][j];
 	return t_mat;
 }
-
+//return product mat of any 2 mats, regardless their dimensions
 int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2)
 {
 	int **result = alloc_matrix(lin1, col2);
@@ -61,7 +58,7 @@ int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2)
 		}
 	return result;
 }
-
+//rise a mat to n pow in logarithmic time
 int **mat_pow(int **mat, int dim, int pow)
 {
 	int **result = alloc_matrix(dim, dim);
@@ -72,7 +69,6 @@ int **mat_pow(int **mat, int dim, int pow)
 				result[i][j] = 1;
 			else
 				result[i][j] = 0;
-
 	while (pow > 0) {
 		if (pow % 2 == 1)
 			result = product_mat(result, mat, dim, dim, dim);

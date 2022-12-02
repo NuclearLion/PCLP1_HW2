@@ -56,3 +56,20 @@ void swap_charact(charact *a, charact *b) {
 			// swap_charact(&c[0], &c[1]);
 			// printf("c1: %d %d\nc2: %d %d\n", c[0].n, c[0].m, c[1].n, c[1].m);
 						
+
+						void query_del(charact **db, int *index, int *cnt_mat)
+{
+	int ind = 0;
+	scanf("%d", &ind);
+	if (check_error(*index, ind)) {
+		return;
+	}
+	for (int i = ind; i < *index; ++i)
+		(*db)[i] = (*db)[i + 1];
+	--*cnt_mat;
+	for (int i = 0; i < (*db)[*index].n; ++i)
+		free(((*db[*index].mat[i]));
+	free((*db)[*index].mat);
+	--*index;
+	*db = realloc(*db, *cnt_mat * sizeof(charact));
+}

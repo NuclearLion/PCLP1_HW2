@@ -18,4 +18,6 @@ void alloc_new_in_db(charact **db, int *mat_cnt, int *index);
 
 void display_db(charact *db, int index);
 
+void free_mat(int **mat, int n);
+
 #endif

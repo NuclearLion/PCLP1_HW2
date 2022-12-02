@@ -8,8 +8,8 @@ FILES=$(wildcard *.c)
 
 TARGET = my_octave
 
-#all:
-#	make clean; make build; make run
+all:
+	make clean; make build; make run
 
 build: $(TARGET)
 

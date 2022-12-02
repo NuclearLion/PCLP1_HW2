@@ -66,3 +66,11 @@ void display_db(charact *db, int index) {
 		}
 	}
 }
+
+//free memory of a mat
+void free_mat(int **mat, int n)
+{
+	for (int i = 0; i < n; ++i)
+		free(mat[i]);
+	free(mat);
+}
