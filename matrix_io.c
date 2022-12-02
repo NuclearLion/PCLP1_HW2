@@ -1,7 +1,7 @@
 //Dan Dominic Staicu 311CA
 #include "matrix_io.h"
 
-//alloc matrix
+//alloc memory for a new matrix
 int **alloc_matrix(int n, int m)
 {
 	int **tmp_mat = (int **)malloc(n * sizeof(int *));
@@ -13,7 +13,7 @@ int **alloc_matrix(int n, int m)
 		tmp_mat[i] = (int *)malloc(m * sizeof(int));
 		if (!tmp_mat[i]) {
 			fprintf(stderr, "malloc failed\n");
-			free_mat(tmp_mat, n);
+			free_mat(tmp_mat, i);
 			return NULL;
 		}
 	}
@@ -50,11 +50,19 @@ void alloc_new_in_db(charact **db, int *mat_cnt, int *index)
 	}
 }
 
+//free memory of a mat
+void free_mat(int **mat, int n)
+{
+	for (int i = 0; i < n; ++i)
+		free(mat[i]);
+	free(mat);
+}
+
 //debug function to display everything from matrix
 //TO DELETE LATER
 void display_db(charact *db, int index) {
 	printf("HERE DISPLAY ALL DB:\n");
-	for (int k = 0; k <= index; ++k) {
+	for (int k = 0; k <= index + 2; ++k) {
 		printf("Index %d of N: %d, M: %d, SUM: %d, MAT:\n", 
 		k, db[k].n, db[k].m, db[k].sum);
 		for (int i = 0; i < db[k].n; ++i) {
@@ -63,12 +71,4 @@ void display_db(charact *db, int index) {
 			printf("\n");
 		}
 	}
-}
-
-//free memory of a mat
-void free_mat(int **mat, int n)
-{
-	for (int i = 0; i < n; ++i)
-		free(mat[i]);
-	free(mat);
 }

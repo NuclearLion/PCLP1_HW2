@@ -34,9 +34,11 @@ void query_resize(charact *db, int index, int mat_cnt)
 		trash();
 		return;
 	}
+	int loc_n = db[ind].n;
 	int **aux = resize_mat(db, ind);
-	free_mat(db[ind].mat, db[ind].n);
+	free_mat(db[ind].mat, loc_n);
 	db[ind].mat = aux;
+	//db[ind].mat = resize_mat(db, ind);
 }
 
 //read indexes and allocate new space for the new mat

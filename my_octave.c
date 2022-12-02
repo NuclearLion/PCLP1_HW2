@@ -33,8 +33,6 @@ int main(void)
 			query_resize(db, index, mat_cnt);
 			break;
 		case 'M':
-			//TODO review, maybe you can do A * B but also B * A
-			//display_db(db, index);
 			query_multiply(&db, &index, &mat_cnt);
 			break;
 		case 'O':
@@ -47,12 +45,11 @@ int main(void)
 			query_pow(db, index, mat_cnt);
 			break;
 		case 'F':
-			query_del(db, &index, &mat_cnt);
+			query_del(&db, &index, &mat_cnt);
 			break;
 		case 'Q':
 			free_all(db, index);
 			return 0;
-			break;
 		default:
 			printf("Unrecognized command\n");
 			break;

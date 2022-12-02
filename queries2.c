@@ -35,20 +35,27 @@ void query_pow(charact *db, int index, int mat_cnt)
 	db[ind].mat = aux;
 }
 
+void overwrite(void *a, void *b, size_t s) {
+	memcpy(a, b, s);
+}
+
 //delete a mat from db
-void query_del(charact *db, int *index, int *cnt_mat)
+void query_del(charact **db, int *index, int *cnt_mat)
 {
 	int ind = 0;
 	scanf("%d", &ind);
 	if (check_error(*index, ind, *cnt_mat))
 		return;
 
-	free_mat(db[ind].mat, db[ind].n);
+	free_mat((*db)[ind].mat, (*db)[ind].n);
 	for (int i = ind; i < *index; ++i)
-		db[i] = db[i + 1];
+		//db[i] = &db[i + 1];
+		overwrite(&(*db)[i], &(*db)[i + 1], (size_t)sizeof(charact));
+	//free_mat((*db)[*index].mat, (*db)[*index].n);
+
 	--*cnt_mat;
 	--*index;
-	db = realloc(db, *cnt_mat * sizeof(charact));
+	*db = realloc(*db, *cnt_mat * sizeof(charact));
 }
 
 void free_all(charact *db, int index)

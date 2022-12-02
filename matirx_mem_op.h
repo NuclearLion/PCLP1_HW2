@@ -5,13 +5,13 @@
 #include "queries.h"
 #include "utils.h"
 
+int **mat_pow(int **mat, int dim, int pow);
+
 int **resize_mat(charact *db, int index);
 
 void sort_db(charact **db, int index);
 
 int **transp_mat(int **mat, int n, int m);
-
-int **mat_pow(int **mat, int dim, int pow);
 
 int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2);
 
