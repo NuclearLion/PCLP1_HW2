@@ -11,6 +11,8 @@
 
 int **add_mat(int **mat1, int **mat2, int dim);
 
-int **strassen(int **mat1, int **mat2, int dim);
+//int **strassen(int **mat1, int **mat2, int dim);
+
+void strassen(int **mat1, int **mat2, int dim, int **result);
 
 #endif
