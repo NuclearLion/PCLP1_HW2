@@ -19,7 +19,7 @@ int **resize_mat(charact *db, int ind)
 	//change dimensions of current mat
 	db[ind].n = lin;
 	db[ind].m = col;
-	
+
 	//free the arrays
 	free(lin_ind);
 	free(col_ind);
@@ -28,7 +28,7 @@ int **resize_mat(charact *db, int ind)
 
 void sort_db(charact **db, int index, int cnt_mat)
 {
-	if (cnt_mat < 1 )
+	if (cnt_mat < 1)
 		return;
 	//calculate the sum of elements of every mat inside db
 	for (int k = 0; k <= index; ++k) {
@@ -41,8 +41,8 @@ void sort_db(charact **db, int index, int cnt_mat)
 	}
 	//sort the mats inside db according to sum
 	for (int i = 0; i < index; ++i)
-		for(int j = i + 1; j <= index; ++j)
-			if ((*db)[i].sum > (*db)[j].sum) 
+		for (int j = i + 1; j <= index; ++j)
+			if ((*db)[i].sum > (*db)[j].sum)
 				swap_any(&(*db)[i], &(*db)[j], (size_t)sizeof(charact));
 }
 

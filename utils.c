@@ -4,11 +4,11 @@
 //swaps any kind of variables
 void swap_any(void *a, void *b, size_t s)
 {
-    void *tmp = malloc(s);
-    memcpy(tmp, a, s);
-    memcpy(a, b, s);
-    memcpy(b, tmp, s);
-    free(tmp);
+	void *tmp = malloc(s);
+	memcpy(tmp, a, s);
+	memcpy(a, b, s);
+	memcpy(b, tmp, s);
+	free(tmp);
 }
 
 //read array dim and elements
@@ -49,7 +49,8 @@ int check_error(int index, int c_ind, int mat_cnt)
 
 //it's more efficient to create some local vars and read them with 2 fors
 //rather than reading them as arrays (so we don't have to allocate memory)
-void trash() {
+void trash(void)
+{
 	int lin = 0, col = 0;
 	int trash = 0;
 	scanf("%d", &lin);

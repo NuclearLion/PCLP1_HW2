@@ -18,6 +18,6 @@ int check_pos(int sum);
 
 int check_error(int index, int c_ind, int mat_cnt);
 
-void trash();
+void trash(void);
 
 #endif

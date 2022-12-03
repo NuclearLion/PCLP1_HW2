@@ -1,20 +1,7 @@
 #include "strassen.h"
 
-int **add_mat(int **mat1, int **mat2, int dim)
-{
-	int **result = alloc_matrix(dim, dim);
-	for (int i = 0; i < dim; ++i)
-		for (int j = 0; j < dim; ++j) {
-			result[i][j] = (mat1[i][j] + mat2[i][j]) % MOD;
-			result[i][j] = check_pos(result[i][j]);
-		}
-	return result;
-}
-
 void strassen(int **mat1, int **mat2, int dim, int **result)
 {
-	//int **result = alloc_matrix(dim, dim);
-
 	if (dim == 1) {
 		result[0][0] = (mat1[0][0] * mat2[0][0]) % MOD;
 	} else {
@@ -93,11 +80,3 @@ void strassen(int **mat1, int **mat2, int dim, int **result)
 		free_mat(b11, mid_dim);
 	}
 }
-//ceva
-//ceva
-//ceva
-///ceva
-//ceva//ce
-//ceva
-//ceva
-//ceva

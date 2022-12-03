@@ -65,14 +65,15 @@ void query_multiply(charact **db, int *index, int *mat_cnt, int stras)
 	(*db)[*index].n = (*db)[m1_ind].n;
 	(*db)[*index].m = (*db)[m2_ind].m;
 
+	//check if it's a Strassen multiplication
 	if (stras == 0) {
 		//alloc mat's mem and fill it with values
 		(*db)[*index].mat = product_mat((*db)[m1_ind].mat, (*db)[m2_ind].mat,
 		(*db)[*index].n, (*db)[m1_ind].m, (*db)[*index].m);
 	} else {
+		//if it's Strassen, alloc mem for new mat which is used as parameter
 		(*db)[*index].mat = alloc_matrix((*db)[*index].n, (*db)[*index].n);
-		strassen((*db)[m1_ind].mat, (*db)[m2_ind].mat,(*db)[m1_ind].n, (*db)[*index].mat);
+		strassen((*db)[m1_ind].mat, (*db)[m2_ind].mat, (*db)[m1_ind].n,
+				 (*db)[*index].mat);
 	}
-		// (*db)[*index].mat = strassen((*db)[m1_ind].mat, (*db)[m2_ind].mat,
-		// (*db)[m1_ind].n);
 }

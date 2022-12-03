@@ -32,7 +32,7 @@ void read_matrix(int **mat, int n, int m)
 void display_matrix(int **mat, int n, int m)
 {
 	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) 
+		for (int j = 0; j < m; ++j)
 			printf("%d ", mat[i][j]);
 		printf("\n");
 	}
@@ -56,19 +56,4 @@ void free_mat(int **mat, int n)
 	for (int i = 0; i < n; ++i)
 		free(mat[i]);
 	free(mat);
-}
-
-//debug function to display everything from matrix
-//TO DELETE LATER
-void display_db(charact *db, int index) {
-	printf("HERE DISPLAY ALL DB:\n");
-	for (int k = 0; k <= index + 2; ++k) {
-		printf("Index %d of N: %d, M: %d, SUM: %d, MAT:\n", 
-		k, db[k].n, db[k].m, db[k].sum);
-		for (int i = 0; i < db[k].n; ++i) {
-			for (int j = 0; j < db[k].m; ++j)
-				printf("%d ", db[k].mat[i][j]);
-			printf("\n");
-		}
-	}
 }

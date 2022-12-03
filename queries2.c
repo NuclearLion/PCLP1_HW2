@@ -30,13 +30,12 @@ void query_pow(charact *db, int index, int mat_cnt)
 		printf("Cannot perform matrix multiplication\n");
 		return;
 	}
-	//int **aux = mat_pow(db[ind].mat, db[ind].n, pow);
-	//free_mat(db[ind].mat, db[ind].n);
-	//db[ind].mat = aux;
 	db[ind].mat = mat_pow(db[ind].mat, db[ind].n, pow);
 }
 
-void overwrite(void *a, void *b, size_t s) {
+//overwrite a value over another, regardless their data type
+void overwrite(void *a, void *b, size_t s)
+{
 	memcpy(a, b, s);
 }
 
