@@ -71,30 +71,3 @@ int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2)
 		}
 	return result;
 }
-
-//rise a mat to n pow in logarithmic time
-int **mat_pow(int **mat, int dim, int pow)
-{
-	int **result = alloc_matrix(dim, dim);
-	//init result mat as I_n
-	for (int i = 0; i < dim; ++i)
-		for (int j = 0; j < dim; ++j)
-			if (i == j)
-				result[i][j] = 1;
-			else
-				result[i][j] = 0;
-	while (pow > 0) {
-		if (pow % 2 == 1) {
-			int **aux = product_mat(result, mat, dim, dim, dim);
-			free_mat(result, dim);
-			result = aux;
-		}
-		int **aux2 = product_mat(mat, mat, dim, dim, dim);
-		free_mat(mat, dim);
-		mat = aux2;
-		// mat = product_mat(mat, mat, dim, dim, dim);
-		pow /= 2;
-	}
-	free_mat(mat, dim);
-	return result;
-}

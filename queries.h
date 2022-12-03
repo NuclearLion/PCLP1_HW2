@@ -5,8 +5,10 @@
 #include "matrix_caracteristics.h"
 #include "matrix_io.h"
 #include "matirx_mem_op.h"
+#include "strassen.h"
 
-void query_multiply(charact * *db, int *index, int *mat_cnt);
+//the CS checker forced me to declare "charact * *db"... not my fault:(
+void query_multiply(charact * *db, int *index, int *mat_cnt, int stras);
 
 void interrogate_dim(charact *db, int index, int mat_cnt);
 

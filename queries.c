@@ -42,7 +42,7 @@ void query_resize(charact *db, int index, int mat_cnt)
 }
 
 //read indexes and allocate new space for the new mat
-void query_multiply(charact **db, int *index, int *mat_cnt)
+void query_multiply(charact **db, int *index, int *mat_cnt, int stras)
 {
 	//matrix 1 index and matrix 2 index
 	int m1_ind = 0, m2_ind = 0;
@@ -65,7 +65,11 @@ void query_multiply(charact **db, int *index, int *mat_cnt)
 	(*db)[*index].n = (*db)[m1_ind].n;
 	(*db)[*index].m = (*db)[m2_ind].m;
 
-	//alloc mat's mem
-	(*db)[*index].mat = product_mat((*db)[m1_ind].mat, (*db)[m2_ind].mat,
-	(*db)[*index].n, (*db)[m1_ind].m, (*db)[*index].m);
+	if (stras == 0)
+		//alloc mat's mem and fill it with values
+		(*db)[*index].mat = product_mat((*db)[m1_ind].mat, (*db)[m2_ind].mat,
+		(*db)[*index].n, (*db)[m1_ind].m, (*db)[*index].m);
+	else
+		(*db)[*index].mat = strassen((*db)[m1_ind].mat, (*db)[m2_ind].mat,
+		(*db)[m1_ind].n);
 }

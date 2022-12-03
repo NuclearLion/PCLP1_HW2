@@ -33,7 +33,7 @@ int main(void)
 			query_resize(db, index, mat_cnt);
 			break;
 		case 'M':
-			query_multiply(&db, &index, &mat_cnt);
+			query_multiply(&db, &index, &mat_cnt, 0);
 			break;
 		case 'O':
 			sort_db(&db, index, mat_cnt);
@@ -50,6 +50,9 @@ int main(void)
 		case 'Q':
 			free_all(db, index);
 			return 0;
+		case 'S':
+			query_multiply(&db, &index, &mat_cnt, 1);
+			break;
 		default:
 			printf("Unrecognized command\n");
 			break;

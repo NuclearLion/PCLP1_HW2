@@ -4,9 +4,8 @@
 
 #include "queries.h"
 #include "utils.h"
-#define MOD 10007
 
-int **mat_pow(int **mat, int dim, int pow);
+#define MOD 10007
 
 int **resize_mat(charact *db, int index);
 

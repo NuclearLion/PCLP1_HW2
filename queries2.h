@@ -6,6 +6,7 @@
 #include "matirx_mem_op.h"
 #include "utils.h"
 #include "matrix_io.h"
+#include "mat_pow.h"
 
 void overwrite(void *a, void *b, size_t s);
 
