@@ -30,9 +30,10 @@ void query_pow(charact *db, int index, int mat_cnt)
 		printf("Cannot perform matrix multiplication\n");
 		return;
 	}
-	int **aux = mat_pow(db[ind].mat, db[ind].n, pow);
-	free_mat(db[ind].mat, db[ind].n);
-	db[ind].mat = aux;
+	//int **aux = mat_pow(db[ind].mat, db[ind].n, pow);
+	//free_mat(db[ind].mat, db[ind].n);
+	//db[ind].mat = aux;
+	db[ind].mat = mat_pow(db[ind].mat, db[ind].n, pow);
 }
 
 void overwrite(void *a, void *b, size_t s) {
@@ -60,7 +61,7 @@ void query_del(charact **db, int *index, int *cnt_mat)
 
 void free_all(charact *db, int index)
 {
-	for (int i = 0; i < index; ++i)
+	for (int i = 0; i <= index; ++i)
 		free_mat(db[i].mat, db[i].n);
 	free(db);
 }

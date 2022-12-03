@@ -36,7 +36,7 @@ int main(void)
 			query_multiply(&db, &index, &mat_cnt);
 			break;
 		case 'O':
-			sort_db(&db, index);
+			sort_db(&db, index, mat_cnt);
 			break;
 		case 'T':
 			query_transposed(db, index, mat_cnt);

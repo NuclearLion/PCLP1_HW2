@@ -1,8 +1,6 @@
 //Dan Dominic Staicu 311CA
 #include "matirx_mem_op.h"
 
-#define MOD 10007
-
 //resize mat keeping only given lines and cols
 int **resize_mat(charact *db, int ind)
 {
@@ -28,8 +26,10 @@ int **resize_mat(charact *db, int ind)
 	return new_mat;
 }
 
-void sort_db(charact **db, int index)
+void sort_db(charact **db, int index, int cnt_mat)
 {
+	if (cnt_mat < 1 )
+		return;
 	//calculate the sum of elements of every mat inside db
 	for (int k = 0; k <= index; ++k) {
 		(*db)[k].sum = 0;
@@ -84,10 +84,17 @@ int **mat_pow(int **mat, int dim, int pow)
 			else
 				result[i][j] = 0;
 	while (pow > 0) {
-		if (pow % 2 == 1)
-			result = product_mat(result, mat, dim, dim, dim);
-		mat = product_mat(mat, mat, dim, dim, dim);
+		if (pow % 2 == 1) {
+			int **aux = product_mat(result, mat, dim, dim, dim);
+			free_mat(result, dim);
+			result = aux;
+		}
+		int **aux2 = product_mat(mat, mat, dim, dim, dim);
+		free_mat(mat, dim);
+		mat = aux2;
+		// mat = product_mat(mat, mat, dim, dim, dim);
 		pow /= 2;
 	}
+	free_mat(mat, dim);
 	return result;
 }

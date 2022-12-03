@@ -4,12 +4,13 @@
 
 #include "queries.h"
 #include "utils.h"
+#define MOD 10007
 
 int **mat_pow(int **mat, int dim, int pow);
 
 int **resize_mat(charact *db, int index);
 
-void sort_db(charact **db, int index);
+void sort_db(charact **db, int index, int cnt_mat);
 
 int **transp_mat(int **mat, int n, int m);
 
