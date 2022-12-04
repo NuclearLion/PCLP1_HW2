@@ -1,3 +1,4 @@
+//Dan Dominic Staicu 311CA
 #include "strassen.h"
 
 //calculate the sum of 2 matrixes and returns the result mat
