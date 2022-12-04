@@ -1,3 +1,4 @@
+//Dan Dominic Staicu 311CA
 #ifndef _MAT_POW_H_
 #define _MAT_POW_H_
 

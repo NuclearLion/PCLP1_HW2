@@ -1,8 +1,28 @@
 #include "strassen.h"
 
+//calculate the sum of 2 matrixes and returns the result mat
+int **add_mat(int **mat1, int **mat2, int dim)
+{
+	int **result = alloc_matrix(dim, dim);
+	for (int i = 0; i < dim; ++i)
+		for (int j = 0; j < dim; ++j) {
+			result[i][j] = (mat1[i][j] + mat2[i][j]) % MOD;
+			result[i][j] = check_pos(result[i][j]);
+		}
+	return result;
+}
+
+//calculate the product mat, using Strassen's recursive algorithm
+//by splitting every mat in 4 smaller mats, until every mat has dimension = 1
+//not returning the product mat, but passing it as an parameter in order to be
+//use less memory by not allocating a new mat every single call of recursivity
+//used binary for the names of the smaller mats having in mind where we need to
+//add the mid_dimension at mat's indexes
+//eg: a[1][0] = mat1[i + mid_dim][j];
 void strassen(int **mat1, int **mat2, int dim, int **result)
 {
 	if (dim == 1) {
+		//if mat has dim 1, we have to leave the recurrence and multiply
 		result[0][0] = (mat1[0][0] * mat2[0][0]) % MOD;
 	} else {
 		int mid_dim = dim / 2;
@@ -45,6 +65,7 @@ void strassen(int **mat1, int **mat2, int dim, int **result)
 		int **a11b11 = alloc_matrix(mid_dim, mid_dim);
 		strassen(a11, b11, mid_dim, a11b11);
 
+		//make additons of the smaller mats, according to the alg
 		int **res_mat_00 = add_mat(a00b00, a01b10, mid_dim);
 		int **res_mat_01 = add_mat(a00b01, a01b11, mid_dim);
 		int **res_mat_10 = add_mat(a10b00, a11b10, mid_dim);

@@ -16,6 +16,7 @@ void read_vect(int **v, int *n)
 {
 	scanf("%d", n);
 	int *w = (int *)malloc(*n * sizeof(int));
+	//if failed, assign NULL to *v vector
 	if (!w) {
 		fprintf(stderr, "malloc failed in read_vect\n");
 		*v = NULL;
@@ -23,11 +24,13 @@ void read_vect(int **v, int *n)
 	}
 	*v = w;
 
+	//read elements of the array
 	for (int i = 0; i < *n; ++i)
 		scanf("%d", &w[i]);
 }
 
 //check if sum after % MOD is negative
+//if it's negative, the value should be MOD + sum
 int check_pos(int sum)
 {
 	if (sum < 0)
@@ -59,4 +62,14 @@ void trash(void)
 	scanf("%d", &col);
 	for (int i = 0; i < col; ++i)
 		scanf("%d", &trash);
+}
+
+//alloc memory for a new mat in db, read it's dimensions, alloc mem
+//of the new mat, and read it's values from STDIN
+void input(charact **db, int *index, int *mat_cnt)
+{
+	alloc_new_in_db(db, mat_cnt, index);
+	scanf("%d%d", &(*db)[*index].n, &(*db)[*index].m);
+	(*db)[*index].mat = alloc_matrix((*db)[*index].n, (*db)[*index].m);
+	read_matrix((*db)[*index].mat, (*db)[*index].n, (*db)[*index].m);
 }

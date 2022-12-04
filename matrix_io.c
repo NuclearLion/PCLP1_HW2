@@ -5,10 +5,13 @@
 int **alloc_matrix(int n, int m)
 {
 	int **tmp_mat = (int **)malloc(n * sizeof(int *));
+	//check if the alloc was succesfull
+	//if failed, free all the memory
 	if (!tmp_mat) {
 		fprintf(stderr, "malloc failed\n");
 		return NULL;
 	}
+	//alloc memory for every line inside the mat
 	for (int i = 0; i < n; ++i) {
 		tmp_mat[i] = (int *)malloc(m * sizeof(int));
 		if (!tmp_mat[i]) {
@@ -20,9 +23,9 @@ int **alloc_matrix(int n, int m)
 	return tmp_mat;
 }
 
+//read elements of matrix from STDIN
 void read_matrix(int **mat, int n, int m)
 {
-	//read elements of matrix from STDIN
 	for (int i = 0; i < n; ++i)
 		for (int j = 0; j < m; ++j)
 			scanf("%d", &mat[i][j]);
@@ -44,8 +47,10 @@ void alloc_new_in_db(charact **db, int *mat_cnt, int *index)
 	++*mat_cnt;
 	*index = *mat_cnt - 1;
 	*db = realloc(*db, *mat_cnt * sizeof(charact));
+	//if failed, free all
 	if (!db) {
 		fprintf(stderr, "realloc of db failed");
+		free_all((*db), *index);
 		exit(-1);
 	}
 }
@@ -53,7 +58,9 @@ void alloc_new_in_db(charact **db, int *mat_cnt, int *index)
 //free memory of a mat
 void free_mat(int **mat, int n)
 {
+	//every single line
 	for (int i = 0; i < n; ++i)
 		free(mat[i]);
+	//and initial pointer
 	free(mat);
 }

@@ -4,7 +4,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "matrix_caracteristics.h"
+#include "queries2.h"
 
 int **alloc_matrix(int n, int m);
 

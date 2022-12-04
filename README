@@ -1,2 +1,91 @@
 Dan Dominic Staicu 311CA ACS UPB
+
 My_Octave
+
+This program simulates Octave and is written in C.
+Every matrix and array is dynamically allocated. It works with input  
+from STDIN. It has the following functions:
+
+*Upload a matrix in memory: if L was readen, the input() function 
+allocates memory for a new matrix and it's characteristics: number of lines,
+columns and its element's sum. It reads a matrix' number of lines and columns, 
+saves them inside the database, allocs memory for a matrix with this dimensions 
+and reads the elements of it, saving them in memory; complexity of O(n * m);
+
+*Determine the dimensions of a matrix at given index: if D was inputed, 
+the interrogate_dim() function reads an index, checks if it is inside the 
+database and, if no error was occured, it displays at STDOUT the number of 
+lines and columns of the requested mat; complexity of O(1);
+
+*Print a matrix at STDOUT: if P was inputed, the query_print() function reads
+an index, checks if it's correct, and displays at STDOUT the elements of the
+requested matrix; complexity of O(n * m)
+
+*Resize a matrix: if C was readen, the query_resize() checks if the requested 
+index is correcnt and than awaits for inputing the new dimensions of the 
+indexed matrix; resize_mat creates a new mat in memory with the new dimensions
+and the requested elements from the elder mat; back in query_resize(), after
+creating this mat, we free the old one and assign to that index the new one;
+this has complexity of O(new_n * new_m);
+
+*Multiply a matrix (classicaly): if M was inputed, query_multiply() will recieve
+FALSE at stras, meaning it has to use the classic multiply algorithm later;
+firstly it reads 2 indexes and checks if them are valid; than, it checks if the
+2 mats can be multiplied by eachother; this means mat1's nr of columns has to be
+equal to mat2's nr of rows; if this doesn't have, it will display an error
+message; if no error was occured, this function allocs memory for a new mat at
+the end of the database; the new mat's dimensions are m1's nr of rows and m2's
+nr of cols; than, because stras is false, the product_mat() allocs memory for a
+new mat and fills it with the values of m1 and m2's product; the product is
+calculated by the "rows and columns" rule; complexity of O(lin1 * col2 * l2c1);
+
+*Sort the database: if O was inputed, sort_db() checks if there were any mats 
+inputed; if there are it calculates the sum and save's it in .sum 
+characteristic of elements of every single mat inside the db and sorts the mats 
+in ascending order according to the .sum; it uses the selection sort algorithm
+which has O(n) complexity and swaps the values by using swap_any function, which
+can swap any data type variables of the same kind; it uses memcpy() in order to
+swap the memory, not only the value;
+
+*Transpose a matrix: if T was inputed, query_transposed() reads and index from 
+STDIN and checks if it's valid; in the aux variable we save the address returned
+by transp_mat(); this func allocates mem for a new mat and fills it with values
+from the older mat, but transposed; this has O(n * m) complexity; back in 
+query_transposed(), free the older mat, and atribute it's index to the newly
+created mat, in order to make the transposed in place;
+
+*Rise a matrix to a power: if R was inputed, query_pow() reads an index and a 
+power; if index is correct and the power is positive, mat_pow() atributes at
+the given index the result of mat^pow; The complexity is O(log(pow)), because
+the new mat starts from I_n and is calculated in logarithmic time; at every step
+pow is divided by two; if the result is odd, we multiply the result by mat, but
+at every step mat is multiplied by itself, meaning mat is rised to the 2nd power
+at every /2 of mat; for multiping is used the product_mat() function which I
+mentioned earlyer; in the end, the elder mat which was at the given index is
+freed;
+
+*Delete a matrix (from the database): if F was inputed, query_del() reads an
+index, checks if it's valid, frees the memory of the mat at that index, and
+moves all of the following indexes of mats with 1 behind by overwriting; 
+Complexity of O(index - ind), where index is the total nr of matrixes and
+ind is the curent readen mat;
+
+*Free the db: if Q is inputed, free_all() func frees the memory from every mat
+inside the database and after that it frees the memory allocated for the *db
+array; if Q was inputed the program will stop;
+
+*Multiply 2 square mats using Strassen algorithm: if S is inputed, the same
+query_multiply() is called, but this time the stras parameter is true; this
+means the function does mostly the same thing, until it has to create the new
+matrix; firstly, it allocates new memory for the product mat; this will be a
+parameter for the strassen(); this function is recursive; it uses the Divide et 
+Impera method, by splitting any given matrix in 4 smaller mats, until their dim
+is of only one element; the 8 smaller mats are summed according to the algorithm
+and later added to the result mat (which was allocated inside the 
+query_multiply() and the int **result parameter now only refers to that matrix'
+memory); every smaller auxiliar matrix allocated in this func is freed in the
+end, so when the recurrent call comes back, it will free every memory allocated
+inside strassen();
+
+If any other letter thant those mentioned above was inputed, the program will
+print at STDOUT an error message;

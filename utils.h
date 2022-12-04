@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "matrix_io.h"
+
 #define MOD 10007
 
 void swap_any(void *a, void *b, size_t s);
@@ -19,5 +21,7 @@ int check_pos(int sum);
 int check_error(int index, int c_ind, int mat_cnt);
 
 void trash(void);
+
+void input(charact **db, int *index, int *mat_cnt);
 
 #endif

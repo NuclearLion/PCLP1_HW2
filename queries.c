@@ -4,11 +4,12 @@
 //print dimensions of requested matrix
 void interrogate_dim(charact *db, int index, int mat_cnt)
 {
-	int c_ind = 0;
+	//read index of requested mat
+	int c_ind = 0; //current read index of requested matrix
 	scanf("%d", &c_ind);
+	//check if mat index is inside the db
 	if (check_error(index, c_ind, mat_cnt))
 		return;
-
 	printf("%d %d\n", db[c_ind].n, db[c_ind].m);
 }
 
@@ -17,6 +18,8 @@ void query_print(charact *db, int index, int mat_cnt)
 {
 	int c_ind = 0; //current read index of requested matrix
 	scanf("%d", &c_ind);
+
+	//check if mat index is inside the db
 	if (check_error(index, c_ind, mat_cnt))
 		return;
 
@@ -26,7 +29,7 @@ void query_print(charact *db, int index, int mat_cnt)
 //allocate to curent mat the new mat
 void query_resize(charact *db, int index, int mat_cnt)
 {
-	int ind = 0;
+	int ind = 0; //current read index of requested matrix
 	scanf("%d", &ind);
 	if (check_error(index, ind, mat_cnt)) {
 		//in case the index it's not inside, we still need to read and trash
@@ -38,10 +41,11 @@ void query_resize(charact *db, int index, int mat_cnt)
 	int **aux = resize_mat(db, ind);
 	free_mat(db[ind].mat, loc_n);
 	db[ind].mat = aux;
-	//db[ind].mat = resize_mat(db, ind);
 }
 
 //read indexes and allocate new space for the new mat
+//the stras variable is a boolean that represets which algorithm to use
+//for multipling (classic or Strassen)
 void query_multiply(charact **db, int *index, int *mat_cnt, int stras)
 {
 	//matrix 1 index and matrix 2 index
@@ -53,6 +57,8 @@ void query_multiply(charact **db, int *index, int *mat_cnt, int stras)
 		return;
 
 	//Mat1 column and mat2 row amount need to be the same
+	//if it's Strassen, it actually checks if both mats have the same dim
+	//as they are square mats
 	if ((*db)[m1_ind].m != (*db)[m2_ind].n) {
 		printf("Cannot perform matrix multiplication\n");
 		return;
@@ -66,7 +72,7 @@ void query_multiply(charact **db, int *index, int *mat_cnt, int stras)
 	(*db)[*index].m = (*db)[m2_ind].m;
 
 	//check if it's a Strassen multiplication
-	if (stras == 0) {
+	if (!stras) {
 		//alloc mat's mem and fill it with values
 		(*db)[*index].mat = product_mat((*db)[m1_ind].mat, (*db)[m2_ind].mat,
 		(*db)[*index].n, (*db)[m1_ind].m, (*db)[*index].m);

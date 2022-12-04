@@ -1,9 +1,11 @@
+//Dan Dominic Staicu 311CA
 #include "mat_pow.h"
 
 //rise a mat to n pow in logarithmic time
 int **mat_pow(int **mat, int dim, int pow)
 {
 	int **result = alloc_matrix(dim, dim);
+
 	//init result mat as I_n
 	for (int i = 0; i < dim; ++i)
 		for (int j = 0; j < dim; ++j)
@@ -11,6 +13,7 @@ int **mat_pow(int **mat, int dim, int pow)
 				result[i][j] = 1;
 			else
 				result[i][j] = 0;
+
 	while (pow > 0) {
 		// if power is odd, we need to multiply the result by mat^3 at that
 		//particular step
@@ -25,6 +28,8 @@ int **mat_pow(int **mat, int dim, int pow)
 		mat = aux2;
 		pow /= 2;
 	}
+
+	//free the mem of the old matrix
 	free_mat(mat, dim);
 	return result;
 }
