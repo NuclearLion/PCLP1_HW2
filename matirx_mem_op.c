@@ -2,7 +2,7 @@
 #include "matirx_mem_op.h"
 
 //resize mat keeping only given lines and cols
-int **resize_mat(charact *db, int ind)
+int **resize_mat(charact_t *db, int ind)
 {
 	//read line and col indexes as arrays
 	int lin = 0, col = 0;
@@ -28,7 +28,7 @@ int **resize_mat(charact *db, int ind)
 }
 
 //calculate the sum of every mat inside the db and sort them accordingly
-void sort_db(charact **db, int index, int cnt_mat)
+void sort_db(charact_t **db, int index, int cnt_mat)
 {
 	//if there is no mat, can't sort anything
 	if (cnt_mat < 1)
@@ -48,7 +48,7 @@ void sort_db(charact **db, int index, int cnt_mat)
 	for (int i = 0; i < index; ++i)
 		for (int j = i + 1; j <= index; ++j)
 			if ((*db)[i].sum > (*db)[j].sum)
-				swap_any(&(*db)[i], &(*db)[j], (size_t)sizeof(charact));
+				swap_any(&(*db)[i], &(*db)[j], (size_t)sizeof(charact_t));
 }
 
 //calculate and return the transposed of any mat
@@ -80,5 +80,38 @@ int **product_mat(int **mat1, int **mat2, int lin1, int l2c1, int col2)
 			result[i][j] = sum;
 		}
 
+	return result;
+}
+
+//rise a mat to n pow in logarithmic time
+int **mat_pow(int **mat, int dim, int pow)
+{
+	int **result = alloc_matrix(dim, dim);
+
+	//init result mat as I_n
+	for (int i = 0; i < dim; ++i)
+		for (int j = 0; j < dim; ++j)
+			if (i == j)
+				result[i][j] = 1;
+			else
+				result[i][j] = 0;
+
+	while (pow > 0) {
+		// if power is odd, we need to multiply the result by mat^3 at that
+		//particular step
+		if (pow % 2 == 1) {
+			int **aux = product_mat(result, mat, dim, dim, dim);
+			free_mat(result, dim);
+			result = aux;
+		}
+		//at every step we multiply only by mat^2
+		int **aux2 = product_mat(mat, mat, dim, dim, dim);
+		free_mat(mat, dim);
+		mat = aux2;
+		pow /= 2;
+	}
+
+	//free the mem of the old matrix
+	free_mat(mat, dim);
 	return result;
 }

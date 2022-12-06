@@ -22,6 +22,6 @@ int check_error(int index, int c_ind, int mat_cnt);
 
 void trash(void);
 
-void input(charact **db, int *index, int *mat_cnt);
+void overwrite(void *a, void *b, size_t s);
 
 #endif

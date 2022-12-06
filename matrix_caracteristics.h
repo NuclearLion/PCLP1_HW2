@@ -8,6 +8,6 @@ typedef struct {
 	int **mat;
 	//sum of all elements inside the matrix
 	int sum;
-} charact;
+} charact_t;
 
 #endif

@@ -42,11 +42,11 @@ void display_matrix(int **mat, int n, int m)
 }
 
 //alloc memory inside thge database for a new matrix and it's nr of lin & col
-void alloc_new_in_db(charact **db, int *mat_cnt, int *index)
+void alloc_new_in_db(charact_t **db, int *mat_cnt, int *index)
 {
 	++*mat_cnt;
 	*index = *mat_cnt - 1;
-	*db = realloc(*db, *mat_cnt * sizeof(charact));
+	*db = realloc(*db, *mat_cnt * sizeof(charact_t));
 	//if failed, free all
 	if (!db) {
 		fprintf(stderr, "realloc of db failed");

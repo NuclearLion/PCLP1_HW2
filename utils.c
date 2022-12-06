@@ -64,12 +64,8 @@ void trash(void)
 		scanf("%d", &trash);
 }
 
-//alloc memory for a new mat in db, read it's dimensions, alloc mem
-//of the new mat, and read it's values from STDIN
-void input(charact **db, int *index, int *mat_cnt)
+//overwrite a value over another, regardless their data type
+void overwrite(void *a, void *b, size_t s)
 {
-	alloc_new_in_db(db, mat_cnt, index);
-	scanf("%d%d", &(*db)[*index].n, &(*db)[*index].m);
-	(*db)[*index].mat = alloc_matrix((*db)[*index].n, (*db)[*index].m);
-	read_matrix((*db)[*index].mat, (*db)[*index].n, (*db)[*index].m);
+	memcpy(a, b, s);
 }

@@ -1,6 +1,5 @@
 //Dan Dominic Staicu 311CA
 #include "matrix_io.h"
-#include "queries2.h"
 #include "matirx_mem_op.h"
 
 #define FALSE 0
@@ -13,7 +12,7 @@ int main(void)
 	int index = 0; //of last matrix
 
 	//db is short from data base (of all matrixes)
-	charact *db = malloc(sizeof(charact));
+	charact_t *db = malloc(sizeof(charact_t));
 	if (!db) {
 		printf("db calloc failed\n");
 		return -1;

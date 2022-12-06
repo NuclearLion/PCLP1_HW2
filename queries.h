@@ -6,14 +6,24 @@
 #include "matrix_io.h"
 #include "matirx_mem_op.h"
 #include "strassen.h"
+#include "utils.h"
 
-//the CS checker forced me to declare "charact * *db"... not my fault:(
-void query_multiply(charact * *db, int *index, int *mat_cnt, int stras);
+void input(charact_t **db, int *index, int *mat_cnt);
 
-void interrogate_dim(charact *db, int index, int mat_cnt);
+void query_multiply(charact_t **db, int *index, int *mat_cnt, int stras);
 
-void query_print(charact *db, int index, int mat_cnt);
+void interrogate_dim(charact_t *db, int index, int mat_cnt);
 
-void query_resize(charact *db, int index, int mat_cnt);
+void query_print(charact_t *db, int index, int mat_cnt);
+
+void query_resize(charact_t *db, int index, int mat_cnt);
+
+void query_transposed(charact_t *db, int index, int mat_cnt);
+
+void query_pow(charact_t *db, int index, int mat_cnt);
+
+void query_del(charact_t **db, int *index, int *cnt_mat);
+
+void free_all(charact_t *db, int index);
 
 #endif
